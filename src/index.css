@@ -8,3 +8,11 @@ html {
   margin: 0;
   box-sizing: border-box;
 }
+
+.tarjeta {
+  @apply rounded-xl m-4 text-gray-700 text-xs mx-4 shadow-out;
+}
+
+.boton {
+  @apply px-3 rounded-full shadow-in font-bold bg-gray-200;
+}

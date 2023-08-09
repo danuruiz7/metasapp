@@ -10,6 +10,10 @@ export default {
         xl: '48px',
         principal: '64px',
       },
+      boxShadow: {
+        out: '10px 10px 20px 0px rgba(163,177,198,0.7)',
+        in: 'inset 2px 2px 5px 0px rgba(163,177,198,0.7)',
+      },
     },
   },
   plugins: [],

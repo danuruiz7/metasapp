@@ -1,0 +1,14 @@
+.meta {
+  @apply flex p-2 justify-between bg-gray-50;
+}
+
+.icono {
+  @apply h-10 w-10 rounded-full flex items-center justify-center text-xl shadow-in;
+}
+
+.barra1 {
+  @apply h-1 w-28 rounded bg-blue-200 shadow-in;
+}
+.barra2 {
+  @apply h-1 rounded bg-gradient-to-l from-green-500 to-blue-700 shadow-in;
+}
