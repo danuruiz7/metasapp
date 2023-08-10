@@ -7,10 +7,10 @@ const Principal = ({ children }) => {
   return (
     <div className={estilos.principal}>
       <aside className={estilos.aside}>
-        <Vinculo href="/list" texto="Lista de Metas">
+        <Vinculo to="/list" texto="Lista de Metas">
           <ListaSVG />
         </Vinculo>
-        <Vinculo href="/crear" texto="Nueva Meta">
+        <Vinculo to="/crear" texto="Nueva Meta">
           <NuevaSVG />
         </Vinculo>
       </aside>

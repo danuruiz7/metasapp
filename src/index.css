@@ -9,10 +9,37 @@ html {
   box-sizing: border-box;
 }
 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .tarjeta {
-  @apply rounded-xl m-4 text-gray-700 text-xs mx-4 shadow-out;
+  @apply rounded-xl bg-gray-100 m-4 text-gray-700 text-xs mx-4 overflow-hidden shadow-out;
 }
 
 .boton {
-  @apply px-3 rounded-full shadow-in font-bold bg-gray-200;
+  @apply px-3 py-2 rounded-full shadow-in font-bold bg-gray-200;
+}
+.boton--black {
+  @apply bg-black text-white hover:bg-gray-700;
+}
+.boton--white {
+  @apply bg-white text-black hover:bg-gray-200;
+}
+
+.boton--rojo {
+  @apply text-red-500 border border-red-500 hover:bg-red-500 hover:text-white;
+}
+
+.botones {
+  @apply bg-gradient-to-r from-gray-700 via-gray-200 to-gray-200 px-4 py-3 flex justify-between;
+}
+
+.label {
+  @apply block uppercase text-xs font-bold mb-6;
+}
+.input {
+  @apply w-full border rounded-xl p-2 focus:outline-none focus:bg-white focus:border-gray-500 shadow-in;
 }

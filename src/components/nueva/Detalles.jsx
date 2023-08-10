@@ -1,43 +1,107 @@
+import { useState } from 'react';
+
 const Detalles = () => {
-  const opcionesDeFrecuencia = ['dia', 'semana', 'mes', 'año'];
+  const [form, setForm] = useState({
+    detalles: '',
+    eventos: 1,
+    periodo: 'semana',
+    icono: '🏃‍♂️',
+    meta: 52,
+    plazo: '2030-10-01',
+    completado: 0,
+  });
+
+  const { detalles, eventos, periodo, icono, meta, plazo, completado } = form;
+
+  const handleChanges = (e, prop) => {
+    setForm((estado) => ({ ...estado, [prop]: e.target.value }));
+  };
+
+  const crear = async () => {
+    console.log(form);
+  };
+
+  const opcionesDeFrecuencia = ['Al dia', 'A la semana', 'Al mes', 'Al año'];
   const icons = ['💻', '🏃‍♂️', '📚', '✈', '💸', '🍆'];
 
   return (
-    <div>
-      <form action="">
-        <label>
+    <div className="tarjeta">
+      <form className="p-4" action="">
+        <label className="label">
           Describe tu meta
-          <input placeholder="ej. 52 caminatas" type="text" />
+          <input
+            className="input"
+            placeholder="ej. 52 caminatas"
+            type="text"
+            value={detalles}
+            onChange={(e) => handleChanges(e, 'detalles')}
+          />
         </label>
-        <label>
+
+        <label className="label">
           ¿Con que frecuencia deseas realizar tu meta?{' '}
           <span>(ej. 1 vez a la semana)</span>
-          <div>
-            <input type="number" />
-            <select>
-              {opcionesDeFrecuencia.map((opcion) => (
-                <opcion key={opcion} value={opcion}>
-                  {opcion}
-                </opcion>
+          <div className="flex mb-6 gap-4">
+            <input
+              className="input"
+              type="number"
+              placeholder="ej. 1"
+              value={eventos}
+              onChange={(e) => handleChanges(e, 'eventos')}
+            />
+            <select
+              className="input"
+              value={periodo}
+              onChange={(e) => handleChanges(e, 'periodos')}
+            >
+              {opcionesDeFrecuencia.map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
               ))}
             </select>
           </div>
         </label>
-        <label>
+
+        <label className="label">
           ¿Cuantas veces deseas completar esta meta?
-          <input type="number" />
+          <input
+            placeholder="52"
+            className="input"
+            type="number"
+            value={meta}
+            onChange={(e) => handleChanges(e, 'meta')}
+          />
         </label>
-        <label>
+
+        <label className="label">
           ¿Tienes una fecha limite?
-          <input type="date" />
+          <input
+            className="input"
+            type="date"
+            value={plazo}
+            onChange={(e) => handleChanges(e, 'plazo')}
+          />
         </label>
-        <label>
+
+        <label className="label">
           ¿Cuantas veces haz completado ya esta meta?
-          <input type="number" />
+          <input
+            placeholder="15"
+            className="input"
+            type="number"
+            value={completado}
+            onChange={(e) => handleChanges(e, 'completado')}
+          />
         </label>
-        <label>
+
+        <label className="label">
           Escoge el icono para la meta
-          <select>
+          <select
+            className="input"
+            value={icono}
+            onChange={(e) => handleChanges(e, 'icono')}
+          >
             {icons.map((icon) => (
               <option key={icon} value={icon}>
                 {icon}
@@ -46,9 +110,12 @@ const Detalles = () => {
           </select>
         </label>
       </form>
-      <div>
-        <button>Crear</button>
-        <button>Cancelar</button>
+
+      <div className="botones">
+        <button className="boton boton--black" onClick={crear}>
+          Crear
+        </button>
+        <button className="boton boton--white">Cancelar</button>
       </div>
     </div>
   );
