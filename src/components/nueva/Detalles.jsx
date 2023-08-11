@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Contexto } from '../../servicios/Memoria';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Detalles = () => {
+  const { id } = useParams();
+
   const [form, setForm] = useState({
     detalles: '',
     eventos: 1,
@@ -11,14 +15,42 @@ const Detalles = () => {
     completado: 0,
   });
 
+  const [estado, enviar] = useContext(Contexto);
+
   const { detalles, eventos, periodo, icono, meta, plazo, completado } = form;
+
+  const navegar = useNavigate();
+
+  useEffect(() => {
+    const metaMemoria = estado.objetos[id];
+    if (!id) return;
+    if (!metaMemoria) {
+      return navegar('/list');
+    }
+    setForm(metaMemoria);
+  }, [id]);
 
   const handleChanges = (e, prop) => {
     setForm((estado) => ({ ...estado, [prop]: e.target.value }));
   };
 
   const crear = async () => {
-    console.log(form);
+    enviar({ tipo: 'crear', meta: form });
+    navegar('/list');
+  };
+
+  const actualizar = () => {
+    enviar({ tipo: 'actualizar', meta: form });
+    navegar('/list');
+  };
+
+  const borrar = () => {
+    enviar({ tipo: 'borrar', id });
+    navegar('/list');
+  };
+
+  const cancelar = () => {
+    navegar('/list');
   };
 
   const opcionesDeFrecuencia = ['Al dia', 'A la semana', 'Al mes', 'Al año'];
@@ -112,10 +144,24 @@ const Detalles = () => {
       </form>
 
       <div className="botones">
-        <button className="boton boton--black" onClick={crear}>
-          Crear
+        {!id && (
+          <button className="boton boton--black" onClick={crear}>
+            Crear
+          </button>
+        )}
+        {id && (
+          <button className="boton boton--black" onClick={actualizar}>
+            Actualizar
+          </button>
+        )}
+        {id && (
+          <button className="boton boton--rojo" onClick={borrar}>
+            Borrar
+          </button>
+        )}
+        <button className="boton boton--white" onClick={cancelar}>
+          Cancelar
         </button>
-        <button className="boton boton--white">Cancelar</button>
       </div>
     </div>
   );
