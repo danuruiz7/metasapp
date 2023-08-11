@@ -8,7 +8,7 @@ const Detalles = () => {
   const [form, setForm] = useState({
     detalles: '',
     eventos: 1,
-    periodo: '',
+    periodo: 'dia',
     icono: '🏃‍♂️',
     meta: 52,
     plazo: '2030-10-01',
@@ -53,7 +53,7 @@ const Detalles = () => {
     navegar('/list');
   };
 
-  const frecuencias = ['día', 'semana', 'mes', 'año'];
+  const frecuencias = ['al día', 'a la semana', 'al mes', 'al año'];
 
   const icons = ['💻', '🏃‍♂️', '📚', '✈', '💸', '🍆'];
 
