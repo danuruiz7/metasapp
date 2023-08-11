@@ -8,7 +8,7 @@ const Detalles = () => {
   const [form, setForm] = useState({
     detalles: '',
     eventos: 1,
-    periodo: 'semana',
+    periodo: '',
     icono: '🏃‍♂️',
     meta: 52,
     plazo: '2030-10-01',
@@ -53,7 +53,8 @@ const Detalles = () => {
     navegar('/list');
   };
 
-  const opcionesDeFrecuencia = ['Al dia', 'A la semana', 'Al mes', 'Al año'];
+  const frecuencias = ['día', 'semana', 'mes', 'año'];
+
   const icons = ['💻', '🏃‍♂️', '📚', '✈', '💸', '🍆'];
 
   return (
@@ -84,11 +85,11 @@ const Detalles = () => {
             <select
               className="input"
               value={periodo}
-              onChange={(e) => handleChanges(e, 'periodos')}
+              onChange={(e) => handleChanges(e, 'periodo')}
             >
-              {opcionesDeFrecuencia.map((o) => (
-                <option key={o} value={o}>
-                  {o}
+              {frecuencias.map((frec) => (
+                <option key={frec} value={frec}>
+                  {frec}
                 </option>
               ))}
             </select>

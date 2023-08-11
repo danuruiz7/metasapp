@@ -12,3 +12,9 @@
 .barra2 {
   @apply h-1 rounded bg-gradient-to-l from-green-500 to-blue-700 shadow-in;
 }
+
+@media (max-width: 600px) {
+  .meta {
+    @apply flex-wrap justify-center items-center gap-y-4;
+  }
+}

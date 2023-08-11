@@ -46,3 +46,9 @@ input[type='number']::-webkit-outer-spin-button {
 .input {
   @apply w-full border rounded-xl p-2 focus:outline-none focus:bg-white focus:border-gray-500 shadow-in;
 }
+
+@media (max-width: 600px) {
+  .boton {
+    @apply text-xs;
+  }
+}

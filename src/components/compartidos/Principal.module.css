@@ -10,3 +10,12 @@
 .main {
   @apply w-full h-full overflow-scroll;
 }
+
+@media (max-width: 600px) {
+  .principal {
+    @apply flex-col;
+  }
+  .aside {
+    @apply flex-row w-full h-auto;
+  }
+}

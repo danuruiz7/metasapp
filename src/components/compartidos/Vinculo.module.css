@@ -1,0 +1,9 @@
+.vinculo {
+  @apply flex gap-1 w-full p-3 text-sm font-semibold  hover:bg-gray-200;
+}
+
+/* @media (max-width: 600px) {
+  .vinculo {
+    @apply gap-0 justify-around;
+  }
+} */
