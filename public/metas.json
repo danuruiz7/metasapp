@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "detalles": "Sexo con json",
+    "periodo": "mes",
+    "eventos": 15,
+    "icono": "🍆",
+    "meta": 100,
+    "plazo": "2023-12-31T23:00:00.000Z",
+    "completado": 15
+  },
+  {
+    "id": 2,
+    "detalles": "Sexo ANAL con json",
+    "periodo": "mes",
+    "eventos": 15,
+    "icono": "🍆",
+    "meta": 100,
+    "plazo": "2023-12-30T23:00:00.000Z",
+    "completado": 15
+  }
+]

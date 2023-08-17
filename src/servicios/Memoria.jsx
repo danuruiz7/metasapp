@@ -33,18 +33,18 @@ import { createContext, useReducer } from 'react';
 //   },
 // ];
 
-const memoria = localStorage.getItem('metas');
-const estadoInicial = memoria
-  ? JSON.parse(memoria)
-  : {
-      orden: [],
-      objetos: {},
-    };
+// const memoria = localStorage.getItem('metas');
+
+const estadoInicial = {
+  order: [],
+  objetos: {},
+};
 
 function reductor(estado, accion) {
   switch (accion.tipo) {
     case 'colocar': {
       const metas = accion.metas;
+      // console.log('colocar', metas);
       const nuevoEstado = {
         orden: metas.map((meta) => meta.id),
         objetos: metas.reduce(
@@ -52,11 +52,11 @@ function reductor(estado, accion) {
           {}
         ),
       };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
       return nuevoEstado;
     }
     case 'crear': {
-      const id = String(Math.random()); //accion.meta.id;
+      const id = accion.meta.id; //String(Math.random());
       accion.meta.id = id;
       const nuevoEstado = {
         orden: [...estado.orden, id],
@@ -66,7 +66,7 @@ function reductor(estado, accion) {
         },
       };
 
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
       return nuevoEstado;
     }
     case 'actualizar': {
@@ -75,7 +75,7 @@ function reductor(estado, accion) {
       const nuevoEstado = {
         ...estado,
       };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
       return nuevoEstado;
     }
     case 'borrar': {
@@ -86,7 +86,7 @@ function reductor(estado, accion) {
         orden: nuevoOrden,
         objetos: estado.objetos,
       };
-      localStorage.setItem('metas', JSON.stringify(nuevoEstado));
+      // localStorage.setItem('metas', JSON.stringify(nuevoEstado));
       return nuevoEstado;
     }
   }

@@ -4,13 +4,14 @@ import { Contexto } from '../../servicios/Memoria';
 import { Outlet } from 'react-router-dom';
 
 const Lista = () => {
-  const [estado, enviar] = useContext(Contexto);
+  const [estado] = useContext(Contexto);
 
   return (
     <>
-      {estado.orden.map((id) => (
-        <Meta key={id} {...estado.objetos[id]}></Meta>
-      ))}
+      {estado.orden &&
+        estado.orden.map((id) => (
+          <Meta key={id} {...estado.objetos[id]}></Meta>
+        ))}
       <Outlet />
     </>
   );

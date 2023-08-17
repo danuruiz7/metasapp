@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Contexto } from '../../servicios/Memoria';
 import { useNavigate, useParams } from 'react-router-dom';
+import { actualizarMeta, crearMeta, borrarMeta } from '../../servicios/Pedidos';
 
 const Detalles = () => {
   const { id } = useParams();
@@ -35,17 +36,20 @@ const Detalles = () => {
   };
 
   const crear = async () => {
-    enviar({ tipo: 'crear', meta: form });
+    const nuevaMeta = await crearMeta(form);
+    enviar({ tipo: 'crear', meta: nuevaMeta });
     navegar('/list');
   };
 
-  const actualizar = () => {
-    enviar({ tipo: 'actualizar', meta: form });
+  const actualizar = async () => {
+    const metaActualizada = await actualizarMeta(form);
+    enviar({ tipo: 'actualizar', meta: metaActualizada });
     navegar('/list');
   };
 
-  const borrar = () => {
-    enviar({ tipo: 'borrar', id });
+  const borrar = async () => {
+    await borrarMeta(form.id);
+    enviar({ tipo: 'borrar', id: form.id });
     navegar('/list');
   };
 
@@ -53,7 +57,7 @@ const Detalles = () => {
     navegar('/list');
   };
 
-  const frecuencias = ['al día', 'a la semana', 'al mes', 'al año'];
+  const frecuencias = ['dia', 'semana', 'mes', 'año'];
 
   const icons = ['💻', '🏃‍♂️', '📚', '✈', '💸', '🍆'];
 

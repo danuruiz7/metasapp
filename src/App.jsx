@@ -6,8 +6,27 @@ import Detalles from './components/nueva/Detalles';
 import Layout from './components/compartidos/Layout';
 import NoEncotrado from './components/compartidos/NoEncotrado';
 import Modal from './components/compartidos/Modal';
+import { useContext, useEffect } from 'react';
+import { Contexto } from './servicios/Memoria';
+import { pedirMetas } from './servicios/Pedidos';
 
 function App() {
+  const [, enviar] = useContext(Contexto);
+
+  useEffect(() => {
+    async function obtenerYColocarMetas() {
+      try {
+        const metas = await pedirMetas();
+        // console.log('efecto', metas);
+        enviar({ tipo: 'colocar', metas });
+      } catch (error) {
+        console.error('Error al obtener metas:', error);
+      }
+    }
+
+    obtenerYColocarMetas();
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
